@@ -1,5 +1,6 @@
 import { Outlet, Link, useLocation } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
+import Chatbot from './Chatbot'
 import { 
   Layout as LayoutIcon, Users, UserCheck, Package, 
   FileText, Megaphone, Warehouse, LogOut, ClipboardList, Bot, Sprout 
@@ -102,6 +103,7 @@ const Layout = () => {
       <main className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 flex-1">
         <Outlet />
       </main>
+      <Chatbot />
     </div>
   )
 }

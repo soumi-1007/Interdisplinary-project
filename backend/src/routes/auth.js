@@ -43,6 +43,7 @@ router.post('/register', [
       user: { id: user.id, email: user.email, name: user.name, role: user.role }
     });
   } catch (error) {
+    console.error('Register error:', error);
     res.status(500).json({ error: 'Server error' });
   }
 });
@@ -80,6 +81,7 @@ router.post('/login', [
       user: { id: user.id, email: user.email, name: user.name, role: user.role }
     });
   } catch (error) {
+    console.error('Login error:', error);
     res.status(500).json({ error: 'Server error' });
   }
 });
@@ -92,6 +94,7 @@ router.get('/me', auth, async (req, res) => {
     });
     res.json(user);
   } catch (error) {
+    console.error('Auth /me error:', error);
     res.status(500).json({ error: 'Server error' });
   }
 });

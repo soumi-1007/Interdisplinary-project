@@ -1,0 +1,77 @@
+{
+    "model_type": "CatBoostClassifier",
+    "model_version": "1.0.0",
+    "target_column": "soil_suitability",
+    "target_classes": [
+        "Needs Improvement",
+        "Not Suitable",
+        "Suitable"
+    ],
+    "numerical_features": [
+        "Temperature",
+        "Humidity",
+        "Moisture",
+        "N_score",
+        "P_score",
+        "K_score"
+    ],
+    "categorical_features": [
+        "district_name",
+        "CROPS"
+    ],
+    "engineered_features": [],
+    "dataset_name": "FINAL_SOIL_SUITABILITY_DATASET.csv",
+    "dataset_row_count": 788815,
+    "training_row_count": 631052,
+    "test_row_count": 157763,
+    "validation_methodology": "80/20 Stratified Split + 3-Fold Stratified Cross-Validation",
+    "random_seed": 42,
+    "hyperparameters": {
+        "iterations": 200,
+        "depth": 6,
+        "learning_rate": 0.1,
+        "l2_leaf_reg": 3.0,
+        "random_seed": 42,
+        "verbose": 0
+    },
+    "training_duration_seconds": 422.18,
+    "package_versions": {
+        "python": "3.13.6",
+        "catboost": "1.2.10",
+        "scikit-learn": "1.7.2",
+        "pandas": "2.3.2",
+        "numpy": "2.3.3"
+    },
+    "evaluation_metrics_test": {
+        "accuracy": 0.9967,
+        "macro_precision": 0.9972,
+        "macro_recall": 0.9957,
+        "macro_f1": 0.9964,
+        "weighted_f1": 0.9967,
+        "class_wise": {
+            "Needs Improvement": {
+                "precision": 0.9959,
+                "recall": 0.9982,
+                "f1_score": 0.9971,
+                "support": 88094
+            },
+            "Not Suitable": {
+                "precision": 0.9975,
+                "recall": 0.9963,
+                "f1_score": 0.9969,
+                "support": 43290
+            },
+            "Suitable": {
+                "precision": 0.9981,
+                "recall": 0.9925,
+                "f1_score": 0.9953,
+                "support": 26379
+            }
+        }
+    },
+    "known_limitations": [
+        "Dataset restricted to 37 Tamil Nadu districts; Chennai is excluded.",
+        "N_score, P_score, K_score represent standardized scores, not raw ppm lab values.",
+        "Requires future validation when deployed to new geographic regions outside TN."
+    ]
+}

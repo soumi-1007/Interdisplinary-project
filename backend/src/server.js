@@ -74,6 +74,21 @@ app.use((req, res) => {
 });
 
 const PORT = process.env.PORT || 5000;
+
+async function verifyDatabaseConnection() {
+  const prisma = require('./config/database');
+  try {
+    await prisma.$connect();
+    await prisma.$queryRaw`SELECT 1`;
+    console.log('Database connection verified');
+  } catch (error) {
+    console.error('Database connection failed. Check DATABASE_URL in backend/.env');
+    console.error(error.message);
+  }
+}
+
+verifyDatabaseConnection();
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
